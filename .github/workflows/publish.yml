@@ -36,13 +36,11 @@ jobs:
           type: zip
           path: dist
           filename: release.zip
-      - name: Get latest commit SHA
-        run: git rev-parse HEAD > checksum.txt
       - uses: ncipollo/release-action@v1
         with:
           tag: latest
           makeLatest: true
-          artifacts: release.zip,checksum.txt
+          artifacts: release.zip
           body: "Latest static site build of landing page"
           allowUpdates: true
           removeArtifacts: true
