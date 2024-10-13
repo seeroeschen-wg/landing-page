@@ -10,7 +10,7 @@
       "name": "Seeröschen WG",
       "description": "WG für Spiel und Spaß zwischen Seerosenstr. und Kreuzstr.",
       "url": "https://eingang-kreuzstrasse.de/",
-      "logo": "./public/favicon.svg",
+      "logo": "./public/favicon.png",
       "contactPoint": {
         "@type": "ContactPoint",
         "email": "webmaster@eingang-kreuzstrasse.de",
