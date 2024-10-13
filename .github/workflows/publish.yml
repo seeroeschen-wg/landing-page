@@ -32,10 +32,11 @@ jobs:
       - name: Build site
         run: pnpm build
       - uses: ncipollo/release-action@v1
+        
         with:
           tag: latest
           makeLatest: true
-          artifacts: "build/*"
+          artifacts: dist
           body: "Latest static site build of landing page"
           allowUpdates: true
           removeArtifacts: true
