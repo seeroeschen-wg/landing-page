@@ -31,12 +31,16 @@ jobs:
         run: pnpm install
       - name: Build site
         run: pnpm build
+      - uses: thedoctor0/zip-release@0.7.6
+        with:
+          type: zip
+          path: dist
+          filename: release.zip
       - uses: ncipollo/release-action@v1
-        
         with:
           tag: latest
           makeLatest: true
-          artifacts: dist
+          artifacts: release.zip
           body: "Latest static site build of landing page"
           allowUpdates: true
           removeArtifacts: true
