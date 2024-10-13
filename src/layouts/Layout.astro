@@ -24,7 +24,7 @@ const ldJson = JSON.stringify(meta.ldJson);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="canonical" href={import.meta.env.SITE} />
-    <script type="application/ld+json" set:html={ldJson} />
+    <script is:inline type="application/ld+json" set:html={ldJson} />
   </head>
   <body class="bg-white">
     <Background />

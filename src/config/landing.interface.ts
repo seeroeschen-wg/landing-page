@@ -3,10 +3,6 @@ export interface LandingPageData {
   headerData: HeaderData;
   heroData: HeroData;
   servicesData: ServicesData;
-  adventajesData: AdventajesData;
-  brandsData: BrandsData;
-  pricingData: PricingData;
-  footerData: FooterData;
 }
 
 export interface HeaderData {
@@ -17,8 +13,6 @@ export interface HeaderData {
 export interface HeroData {
   title: string;
   subTitle: string;
-  primaryCta: string;
-  secondaryCta: string;
   highlightedTitle: string;
 }
 
