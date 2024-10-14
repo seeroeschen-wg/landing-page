@@ -21,8 +21,17 @@ const ldJson = JSON.stringify(meta.ldJson);
     <meta charset={meta.charset ?? "UTF-8"} />
     <title>{meta.title}</title>
     <meta name="description" content={meta.description} />
+    <meta property="og:title" content={meta.title} />
+	<meta property="og:description" content={meta.description} />
+	<meta property="og:image" content="/banner.png" />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="300" />
+	<meta property="og:image:alt" content="beautiful calm pond with water lilies" />
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" content="de_DE" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="canonical" href={import.meta.env.SITE} />
     <script is:inline type="application/ld+json" set:html={ldJson} />
   </head>
