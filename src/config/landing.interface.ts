@@ -3,6 +3,7 @@ export interface LandingPageData {
   headerData: HeaderData;
   heroData: HeroData;
   servicesData: ServicesData;
+  eventsData: SimpleData;
 }
 
 export interface HeaderData {
@@ -27,17 +28,8 @@ export interface Service {
   description: string;
 }
 
-export interface AdventajesData {
-  title: string;
-  adventajes: Adventaje[];
-}
-
-export interface Adventaje {
-  title: string;
-  description: string;
-  img: string;
-  imageAlt: string;
-  checks: string[];
+export interface SimpleData extends Meta {
+  heroData: HeroData;
 }
 
 export interface FooterData {
@@ -90,9 +82,9 @@ export interface Price {
 export interface Meta {
   title: string;
   description: string;
-  lang: string;
-  charset: string;
-  ldJson: LdJson;
+  lang?: string;
+  charset?: string;
+  ldJson?: LdJson;
 }
 
 export interface LdJson {

@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Header from "@/sections/Header.astro";
 import Hero from "@/sections/Hero.astro";
 import { getLandingData } from "@/services/data.service";
 
@@ -7,7 +8,7 @@ const data = await getLandingData();
 ---
 
 <Layout meta={data.meta}>
-  <!-- <Header data={data.headerData} /> -->
+  <Header data={data.headerData} />
   <main class="flex flex-col justify-center items-center">
     <div class="w-3/4">
       <Hero data={data.heroData} />

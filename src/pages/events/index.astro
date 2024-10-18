@@ -1,0 +1,14 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getLandingData } from "@/services/data.service";
+
+const data = await getLandingData();
+---
+
+<Layout meta={data.eventsData}>
+	<main class="flex flex-col justify-center items-center">
+		<div class="w-3/4">
+			
+		</div>
+	</main>
+</Layout>
