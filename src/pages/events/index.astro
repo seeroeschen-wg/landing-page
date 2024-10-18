@@ -1,4 +1,7 @@
 ---
+import Action from "@/components/Action.astro";
+import Card from "@/components/Card.astro";
+import Centered from "@/layouts/Centered.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getLandingData } from "@/services/data.service";
 
@@ -6,9 +9,18 @@ const data = await getLandingData();
 ---
 
 <Layout meta={data.eventsData}>
-	<main class="flex flex-col justify-center items-center">
-		<div class="w-3/4">
-			
-		</div>
-	</main>
+	<Centered>
+		<h1 class="text-4xl text-center font-semibold md:text-6xl">
+			{data.eventsData.title}
+		</h1>
+		<section class="flex justify-center mt-48 h-screen">
+			<div class="md:w-1/2">
+				<Card>
+					<Action as="a" href="events/halloween">
+					Halloween
+					</Action>
+				</Card>
+			</div>
+		</section>
+	</Centered>
 </Layout>

@@ -29,7 +29,7 @@ export interface Service {
 }
 
 export interface SimpleData extends Meta {
-  heroData: HeroData;
+  heroData?: HeroData;
 }
 
 export interface FooterData {

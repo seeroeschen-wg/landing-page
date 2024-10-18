@@ -61,6 +61,7 @@
 		]
 	},
 	"eventsData": {
-		"title": "Events"
+		"title": "Events",
+		"description": "Zukünftige und vergangene Events"
 	}
 }
