@@ -10,7 +10,6 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.associations": {
     "*.svg": "html"
   },
@@ -27,8 +26,5 @@
   "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
   "editor.insertSpaces": false,
   "editor.detectIndentation": false,
-  "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "prettier.documentSelectors": ["**/*.astro"]
 }
