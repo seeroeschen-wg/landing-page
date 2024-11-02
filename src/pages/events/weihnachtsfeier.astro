@@ -1,0 +1,48 @@
+---
+import type { HeaderData, SimpleData } from "@/config/landing.interface";
+import Centered from "@/layouts/Centered.astro";
+import Header from "@/sections/Header.astro";
+import { getLandingData } from "@/services/data.service";
+
+const mainData = await getLandingData();
+
+const meta: SimpleData = {
+  title: "Weihnachtsfeier",
+  description: "WG Weihnachtsfeier 2024",
+};
+
+const headerData: HeaderData = {
+  logo: "Nordpol",
+  links: [],
+};
+---
+
+<!doctype html>
+<html
+  class="scrollbar-thin scrollbar-thumb-black scrollbar-track-transparent scroll-smooth"
+  lang={mainData.meta.lang ?? "en"}
+>
+  <head>
+    <meta charset={mainData.meta.charset ?? "UTF-8"} />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/santa.png" />
+  </head>
+  <body>
+    <Header data={headerData} />
+    <Centered>
+      <section class="flex justify-center mt-48 h-screen">
+        <div class="md:w-1/2">
+          <h1 class="text-4xl font-semibold md:text-6xl">
+            WG Weihnachtsfeier 2024
+          </h1>
+          <h2 class="mt-10 text-lg opacity-80 md:text-2xl">
+            Wo? Natürlich in der Seeröschen WG (Eingang Kreuzstraße)<br />
+            Was? Wichteln, Glühwein und Schlemmerei
+          </h2>
+        </div>
+      </section>
+    </Centered>
+  </body>
+</html>
