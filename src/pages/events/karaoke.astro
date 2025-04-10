@@ -1,9 +1,8 @@
 ---
 import type { SimpleData } from "@/config/landing.interface";
-import { getKaraokeList, getLandingData } from "@/services/data.service";
+import { getLandingData } from "@/services/data.service";
 
 const mainData = await getLandingData();
-const songList = await getKaraokeList();
 
 const meta: SimpleData = {
   title: "Singo",
@@ -12,7 +11,10 @@ const meta: SimpleData = {
 ---
 
 <!doctype html>
-<html lang={mainData.meta.lang ?? "en"}>
+<html
+  class="scrollbar-thin scrollbar-thumb-black scrollbar-track-transparent scroll-smooth"
+  lang={mainData.meta.lang ?? "en"}
+>
   <head>
     <meta charset={mainData.meta.charset ?? "UTF-8"} />
     <title>{meta.title}</title>
@@ -22,38 +24,23 @@ const meta: SimpleData = {
   </head>
   <body class="bg-black">
     <div id="content">
-      <img class="centered" src="/disco-ball.gif" alt="Disco Ball" />
+      <img
+      id="picture"
+      src="/disco-ball.gif"
+      alt="Disco Ball"
+      />
       <h1 class="text-4xl font-semibold md:text-6xl">Singo 2025</h1>
-      <hr class="mb-5" />
-      <table class="centered">
-        <tr>
-          <thead>
-            <tr>
-              <th>Song Title</th>
-              <th>Code</th>
-              <th>Artist</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              songList.map((song) => (
-                <tr>
-                  <td>{song.title}</td>
-                  <td class="song-number">{song.number}</td>
-                  <td>{song.artist}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </tr>
-      </table>
-      <img class="centered rotate-180 mt-3" src="/disco-ball.gif" alt="Disco Ball" />
+      <div class="song-container">
+        <ol></ol>
+        <ol></ol>
+      </div>
     </div>
   </body>
 </html>
 
 <style>
   body {
+    overflow: hidden;
     margin: 0;
   }
 
@@ -66,7 +53,7 @@ const meta: SimpleData = {
     text-align: center;
   }
 
-  .centered {
+  #picture {
     margin-left: auto;
     margin-right: auto;
   }
@@ -75,24 +62,10 @@ const meta: SimpleData = {
     color: lightblue;
   }
 
-  .song-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: sans-serif;
-  }
-
-  th,
-  td {
-    border: 1px solid grey;
-    padding: 0.4rem 0.6rem;
-    text-align: left;
-  }
-
-  th {
-    background-color: darkblue;
-  }
-
-  .song-number {
-    background-color: darkorchid;
+  .list-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 20px;
   }
 </style>
