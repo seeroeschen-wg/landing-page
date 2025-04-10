@@ -33,22 +33,24 @@ const meta: SimpleData = {
       <table class="centered">
         <tr>
           <td>
-            <ol>
+            <ol class="list-left">
               {
                 Array.from(songList1, (song, i) => (
                   <li>
-                    {i + 1}. {song.title}
+                    <div class="song-title">{i + 1}. {song.title}</div>
+                    <div class="song-artist">{song.artist}</div>
                   </li>
                 ))
               }
             </ol>
           </td>
           <td>
-            <ol>
+            <ol class="list-right">
               {
                 Array.from(songList2, (song, i) => (
                   <li>
-                    {i + 1}. {song.title}
+                    <div class="song-title">{i + 46}. {song.title}</div>
+                    <div class="song-artist">{song.artist}</div>
                   </li>
                 ))
               }
@@ -62,7 +64,6 @@ const meta: SimpleData = {
 
 <style>
   body {
-    overflow: hidden;
     margin: 0;
   }
 
@@ -88,7 +89,19 @@ const meta: SimpleData = {
     margin-bottom: 30px;
   }
 
-  ol {
-    text-align: left;
+  .list-left {
+    text-align: start;
+  }
+
+  .list-right {
+    text-align: end;
+  }
+
+  li {
+    padding-bottom: 10px;
+  }
+
+  .song-title {
+    font-size: larger;
   }
 </style>
