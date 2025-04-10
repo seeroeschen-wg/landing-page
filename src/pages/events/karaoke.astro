@@ -1,0 +1,98 @@
+---
+import type { SimpleData } from "@/config/landing.interface";
+import { getKaraokeList, getLandingData } from "@/services/data.service";
+
+const mainData = await getLandingData();
+const songList = await getKaraokeList();
+
+const meta: SimpleData = {
+  title: "Singo",
+  description: "Singo 2025",
+};
+---
+
+<!doctype html>
+<html lang={mainData.meta.lang ?? "en"}>
+  <head>
+    <meta charset={mainData.meta.charset ?? "UTF-8"} />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/disco-ball.png" />
+  </head>
+  <body class="bg-black">
+    <div id="content">
+      <img class="centered" src="/disco-ball.gif" alt="Disco Ball" />
+      <h1 class="text-4xl font-semibold md:text-6xl">Singo 2025</h1>
+      <hr class="mb-5" />
+      <table class="centered">
+        <tr>
+          <thead>
+            <tr>
+              <th>Song Title</th>
+              <th>Code</th>
+              <th>Artist</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              songList.map((song) => (
+                <tr>
+                  <td>{song.title}</td>
+                  <td class="song-number">{song.number}</td>
+                  <td>{song.artist}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </tr>
+      </table>
+      <img class="centered rotate-180 mt-3" src="/disco-ball.gif" alt="Disco Ball" />
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  #content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    height: 100vh;
+    margin: 1rem;
+    text-align: center;
+  }
+
+  .centered {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    color: lightblue;
+  }
+
+  .song-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+  }
+
+  th,
+  td {
+    border: 1px solid grey;
+    padding: 0.4rem 0.6rem;
+    text-align: left;
+  }
+
+  th {
+    background-color: darkblue;
+  }
+
+  .song-number {
+    background-color: darkorchid;
+  }
+</style>
