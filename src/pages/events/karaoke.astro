@@ -1,8 +1,12 @@
 ---
 import type { SimpleData } from "@/config/landing.interface";
-import { getLandingData } from "@/services/data.service";
+import { getKaraokeList, getLandingData } from "@/services/data.service";
 
 const mainData = await getLandingData();
+const songList = await getKaraokeList();
+
+const songList1 = songList.slice(0, 45);
+const songList2 = songList.slice(45);
 
 const meta: SimpleData = {
   title: "Singo",
@@ -24,16 +28,35 @@ const meta: SimpleData = {
   </head>
   <body class="bg-black">
     <div id="content">
-      <img
-      id="picture"
-      src="/disco-ball.gif"
-      alt="Disco Ball"
-      />
+      <img class="centered" src="/disco-ball.gif" alt="Disco Ball" />
       <h1 class="text-4xl font-semibold md:text-6xl">Singo 2025</h1>
-      <div class="song-container">
-        <ol></ol>
-        <ol></ol>
-      </div>
+      <hr>
+      <table class="centered">
+        <tr>
+          <td>
+            <ol>
+              {
+                Array.from(songList1, (song, i) => (
+                  <li>
+                    {i + 1}. {song.title}
+                  </li>
+                ))
+              }
+            </ol>
+          </td>
+          <td>
+            <ol>
+              {
+                Array.from(songList2, (song, i) => (
+                  <li>
+                    {i + 1}. {song.title}
+                  </li>
+                ))
+              }
+            </ol>
+          </td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
@@ -53,7 +76,7 @@ const meta: SimpleData = {
     text-align: center;
   }
 
-  #picture {
+  .centered {
     margin-left: auto;
     margin-right: auto;
   }
@@ -62,10 +85,11 @@ const meta: SimpleData = {
     color: lightblue;
   }
 
-  .list-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    padding: 20px;
+  hr {
+    margin-bottom: 30px;
+  }
+
+  ol {
+    text-align: left;
   }
 </style>
