@@ -5,9 +5,6 @@ import { getKaraokeList, getLandingData } from "@/services/data.service";
 const mainData = await getLandingData();
 const songList = await getKaraokeList();
 
-const songList1 = songList.slice(0, 45);
-const songList2 = songList.slice(45);
-
 const meta: SimpleData = {
   title: "Singo",
   description: "Singo 2025",
@@ -15,9 +12,7 @@ const meta: SimpleData = {
 ---
 
 <!doctype html>
-<html
-  lang={mainData.meta.lang ?? "en"}
->
+<html lang={mainData.meta.lang ?? "en"}>
   <head>
     <meta charset={mainData.meta.charset ?? "UTF-8"} />
     <title>{meta.title}</title>
@@ -29,33 +24,27 @@ const meta: SimpleData = {
     <div id="content">
       <img class="centered" src="/disco-ball.gif" alt="Disco Ball" />
       <h1 class="text-4xl font-semibold md:text-6xl">Singo 2025</h1>
-      <hr>
+      <hr />
       <table class="centered">
         <tr>
-          <td>
-            <ol class="list-left">
-              {
-                Array.from(songList1, (song, i) => (
-                  <li>
-                    <div class="song-title">{i + 1}. {song.title}</div>
-                    <div class="song-artist">{song.artist}</div>
-                  </li>
-                ))
-              }
-            </ol>
-          </td>
-          <td>
-            <ol class="list-right">
-              {
-                Array.from(songList2, (song, i) => (
-                  <li>
-                    <div class="song-title">{i + 46}. {song.title}</div>
-                    <div class="song-artist">{song.artist}</div>
-                  </li>
-                ))
-              }
-            </ol>
-          </td>
+          <thead>
+            <tr>
+              <th>Song Title</th>
+              <th>Code</th>
+              <th>Artist</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              songList.map((song) => (
+                <tr>
+                  <td>{song.title}</td>
+                  <td class="song-number">{song.number}</td>
+                  <td>{song.artist}</td>
+                </tr>
+              ))
+            }
+          </tbody>
         </tr>
       </table>
     </div>
@@ -89,19 +78,24 @@ const meta: SimpleData = {
     margin-bottom: 30px;
   }
 
-  .list-left {
-    text-align: start;
+  .song-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
   }
 
-  .list-right {
-    text-align: end;
+  th,
+  td {
+    border: 1px solid grey;
+    padding: 0.4rem 0.6rem;
+    text-align: left;
   }
 
-  li {
-    padding-bottom: 10px;
+  th {
+    background-color: darkblue;
   }
 
-  .song-title {
-    font-size: larger;
+  .song-number {
+    background-color: darkorchid;
   }
 </style>
