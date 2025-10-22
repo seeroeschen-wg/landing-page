@@ -1,0 +1,82 @@
+---
+import type { SimpleData } from "@/config/landing.interface";
+import { getLandingData } from "@/services/data.service";
+
+const mainData = await getLandingData();
+
+const meta: SimpleData = {
+  title: "Kochkurs",
+  description: "Kochkurs 2026",
+};
+---
+
+<!doctype html>
+<html
+  class="scrollbar-thin scrollbar-thumb-black scrollbar-track-transparent scroll-smooth"
+  lang={mainData.meta.lang ?? "en"}
+>
+  <head>
+    <meta charset={mainData.meta.charset ?? "UTF-8"} />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/pumpkin.png" />
+  </head>
+  <body class="bg-green">
+    <canvas id="canvas"></canvas>
+    <div id="content">
+      <h1 class="text-4xl font-semibold md:text-4xl">Hueregutschein</h1>
+      <h2 class="mt-10 text-lg opacity-80 md:text-2xl">
+        Hallo Liebe Lea,<br />
+        Alles Gute zum Geburtstag!!
+      </h2>
+      <hr class="mt-3" />
+      <p class="mt-3">Und dass wir lorem ipsum!</p>
+    </div>
+    <img id="picture" src="/wg-cooks.png" alt="WG Köche" />
+  </body>
+</html>
+
+<style>
+  body {
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .bg-green {
+    background-color: #5e936c;
+  }
+
+  #canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  #content {
+    position: relative;
+    z-index: 2;
+    color: #e8ffd7;
+    height: 100vh;
+    margin: 1rem;
+  }
+
+  h1 {
+    color: #3e5f44;
+  }
+
+  #picture {
+    position: absolute;
+    bottom: 0;
+  }
+
+  #fright {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin-bottom: 2rem;
+  }
+</style>
